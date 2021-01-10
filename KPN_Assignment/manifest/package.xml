@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>OrderHandler</members>
+		<members>OrderExternalService</members>
+		<members>OrderHandlerTest</members>
+		<members>TestUtility</members>
+		<members>OrderExternalServiceMock</members>
+        <name>ApexClass</name>
+    </types>
+	<types>
+        <members>Order_page</members>
+        <members>Order_App_UtilityBar</member>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>OrderConfirm</members>
+        <name>RemoteSiteSetting</name>
+    </types>
+    <types>
+        <members>orderProductsFromOrder</members>
+		<members>availableProducts</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>MyMessageChannel</members>
+        <name>LightningMessageChannel</name>
+    </types>
+    <types>
+        <members>Order_app</members>
+        <name>CustomApplication</name>
+    </types>
+    <version>50.0</version>
+</Package>

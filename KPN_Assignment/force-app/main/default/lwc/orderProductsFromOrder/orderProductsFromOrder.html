@@ -1,0 +1,78 @@
+<!--
+* CTS, Inc
+* Name            :    orderProductsFromOrder
+* Description     :    This is the html file of orderProductsFromOrder LWC component used to show the product associated with a order
+* Created Date    :    [10th January , 2021]
+* Created By      :    [Gourav Bhowmik] (CTS)
+*
+* Date Modified        Modified By             Description of the update
+   10th-Jan-2021      Gourav Bhowmik          Created
+-->
+<template>
+  <template if:true={orderInfoPriceBook}>
+    <div style='padding-bottom: 30px;padding-left: 10px; font-size: 22px; font-weight: 600;'> <b>Order products from Order</b> </div>
+    
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+              <tr class="slds-line-height_reset">
+                <th class="tableheader" data-id='Name' onclick={handleSort} >
+                  <div  title="Name">Name 
+                    
+                  </div>
+                </th>
+                <th class="tableheader" data-id='UnitPrice' onclick={handleSort} >
+                    <div  title="Unit Price" >Unit Price
+                      
+                    </div>
+                  </th>
+                  <th class="tableheader" data-id='Quantity' onclick={handleSort}>
+                    <div  title="Quantity">Quantity 
+                      
+                    </div>
+                  </th>
+                  <th class="tableheader" data-id='TotalPrice' onclick={handleSort} >
+                    <div  title="Total Price ">Total Price
+                      
+                    </div>
+                  </th>
+                  
+              </tr>
+            </thead>
+            <tbody>
+                    <template iterator:it={orderProductData}>
+                            <tr  key={it.value.Id}>
+                            <td data-label="File Name" >
+                                    <div class="tablebody" >
+                                      {it.value.Product2.Name}
+                                  </div>
+                            </td>
+                            <td data-label="Effective Date" >
+                                    <div class="tablebody" >
+                                    {it.value.UnitPrice}
+                                    </div>
+                            </td>
+                            <td  data-label="Date Posted" >
+                                    <div class="tablebody" >
+                                    {it.value.Quantity}
+                                    </div>
+                            </td>
+                            <td  data-label="Date Posted" >
+                            <div class="tablebody" >
+                            {it.value.TotalPrice}
+                            </div>
+                            </td>
+                            
+                            </tr>
+                    </template>
+            </tbody>
+    </table>
+
+<template if:true={showSpinner}>
+    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    
+ </template>
+ <div class="slds-align_absolute-center" style="height:5rem">
+ <lightning-button variant="brand"  label="Confirm Order" title="Primary action" onclick={confirmOrder} class="slds-m-left_x-small" disabled={diableButtons}></lightning-button>
+</div>
+</template>
+</template>

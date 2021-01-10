@@ -1,0 +1,84 @@
+<!--
+* CTS, Inc
+* Name            :    availableProducts
+* Description     :    This is the html file of availableProducts LWC component used to show the avilable product , associated with active Pricebook Entry in the Pricebook related to the current order 
+* Created Date    :    [10th January , 2021]
+* Created By      :    [Gourav Bhowmik] (CTS)
+*
+* Date Modified        Modified By             Description of the update
+   10th-Jan-2021      Gourav Bhowmik          Created
+-->
+<template>
+  <template if:true={orderInfoPriceBook}>
+   
+    <div style='padding-bottom: 30px;padding-left: 10px; font-size: 22px; font-weight: 600;'> <b>Available products</b> </div>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+          <tr class="slds-line-height_reset">
+            <th class="tableheader" data-id='Name' onclick={handleSort} >
+              <div  title="Name">Name 
+                 
+              </div>
+            </th>
+            <th class="tableheader" data-id='UnitPrice' onclick={handleSort} >
+                <div  title="Unit Price" >List Price
+                   
+                </div>
+              </th>
+              
+              <th class="tableheader" >
+                <div  title=""></div>
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+                <template iterator:it={data}>
+                        <tr  key={it.value.Id}>
+                         <td data-label="File Name" >
+                                <div class="tablebody" >
+                                  {it.value.Product2.Name}
+                               </div>
+                         </td>
+                         <td data-label="Effective Date" >
+                                <div class="tablebody" >
+                                {it.value.UnitPrice}
+                                </div>
+                        </td>
+                        
+                        <td  data-label="Date Posted" >
+                         <div class="tablebody" >
+                            <lightning-button variant="brand" data-id={it.index} label="Add Product" title="Primary action" onclick={addProduct} class="slds-m-left_x-small" disabled={diableButtons}></lightning-button>
+                         </div>
+                        </td>
+                        </tr>
+                </template>
+        </tbody>
+</table>
+<lightning-layout>
+    <lightning-layout-item>
+       <lightning-button 
+             label="Previous" 
+             icon-name="utility:chevronleft" 
+              onclick={previousHandler}>
+       </lightning-button>
+     </lightning-layout-item>
+       <lightning-layout-item flexibility="grow">
+       </lightning-layout-item>
+    <lightning-layout-item>
+     <lightning-button 
+           label="Next" 
+           icon-name="utility:chevronright" 
+           icon-position="right" 
+           onclick={nextHandler}>
+      </lightning-button>
+    </lightning-layout-item>
+</lightning-layout>
+<template if:true={showSpinner}>
+    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    
+ </template>
+</template>
+ <template if:false={orderInfoPriceBook}>
+  No Pricebook selected. Please select a pricebook first.
+</template>
+</template>
